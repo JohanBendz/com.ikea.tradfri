@@ -252,10 +252,10 @@
       }
     },
     {
-      "id": "dimmable_transformer_10w",
+      "id": "dimmable_transformer",
       "name": {
-        "en": "Dimmable Transformer 10W",
-        "nl": "Dimbare Transformator 10W"
+        "en": "Dimmable Transformer",
+        "nl": "Dimbare Transformator"
       },
       "class": "light",
       "capabilities": [
@@ -264,14 +264,17 @@
       ],
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
-        "productId": "TRADFRI transformer 10W",
+        "productId": [
+          "TRADFRI transformer 10W",
+          "TRADFRI transformer 30W"
+        ],
         "deviceId": 256,
         "profileId": [
           260,
           49246
         ],
         "learnmode": {
-          "image": "/drivers/dimmable_transformer_10w/assets/icon.svg",
+          "image": "/drivers/dimmable_transformer/assets/icon.svg",
           "instruction": {
             "en": "Toggle the transformer to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the transformer by toggling it 6 times very quickly. It will flash twice to indicate it has been reset.",
             "nl": "Zet de transformator uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de transformator aan en uit te zetten. De transformator zal twee keer knipperen om aan te geven dat hij is gereset."
@@ -279,40 +282,8 @@
         }
       },
       "images": {
-        "large": "/drivers/dimmable_transformer_10w/assets/images/large.jpg",
-        "small": "/drivers/dimmable_transformer_10w/assets/images/small.jpg"
-      }
-    },
-    {
-      "id": "dimmable_transformer_30w",
-      "name": {
-        "en": "Dimmable Transformer 30W",
-        "nl": "Dimbare Transformator 30W"
-      },
-      "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim"
-      ],
-      "zigbee": {
-        "manufacturerName": "IKEA of Sweden",
-        "productId": "TRADFRI transformer 30W",
-        "deviceId": 256,
-        "profileId": [
-          260,
-          49246
-        ],
-        "learnmode": {
-          "image": "/drivers/dimmable_transformer_10w/assets/icon.svg",
-          "instruction": {
-            "en": "Toggle the transformer to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the transformer by toggling it 6 times very quickly. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de transformator uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de transformator aan en uit te zetten. De transformator zal twee keer knipperen om aan te geven dat hij is gereset."
-          }
-        }
-      },
-      "images": {
-        "large": "/drivers/dimmable_transformer_10w/assets/images/large.jpg",
-        "small": "/drivers/dimmable_transformer_10w/assets/images/small.jpg"
+        "large": "/drivers/dimmable_transformer/assets/images/large.jpg",
+        "small": "/drivers/dimmable_transformer/assets/images/small.jpg"
       }
     },
     {

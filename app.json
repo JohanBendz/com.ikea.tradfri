@@ -22,6 +22,32 @@
     "small": "/assets/images/small.png"
   },
   "drivers": [
+   {
+     "id": "remote_control",
+     "name": {
+       "en": "5 Button Remote Control",
+       "nl": "Afstandsbediening met 5 knoppen"
+     },
+     "class": "button",
+     "capabilities": [],
+     "zigbee": {
+       "manufacturerName": "IKEA of Sweden",
+       "productId": [ "TRADFRI remote control" ],
+       "deviceId": [ 2080, 2096 ],
+       "profileId": 49246,
+       "learnmode": {
+         "image": "/drivers/remote_control/assets/icon.svg",
+         "instruction": {
+          "en": "Open up the Remote Control to access the pair button. Press the pair button 4 times in 5 seconds",
+          "nl": "Maak de Afstandsbediening open om bij de pair knop te komen. Druk 4 keer op de pair knop binnen 5 seconden"
+         }
+        }
+      },
+      "images": {
+      "large": "/drivers/remote_control/assets/images/large.jpg",
+      "small": "/drivers/remote_control/assets/images/small.jpg"
+    }
+    },
     {
       "id": "tunable_white_bulb",
       "name": {
@@ -390,7 +416,7 @@
       }
     }
   ],
-  "flow": {
+ "flow": {
     "triggers": [
       {
         "id": "dimmer_rotated",
@@ -404,19 +430,143 @@
             "type": "device",
             "filter": "driver_id=remote_rotating_dimmer"
           }
-        ],
+        ]
+      },
+      {
+        "id": "remote_control_onoff",
+        "title": {
+          "en": "OnOff-button pressed"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remote_control"
+          }
+        ]
+      },
+      {
+        "id": "remote_control_dim",
+        "title": {
+          "en": "Dim buttons"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remote_control"
+          },
+          {
+          "name": "action",
+          "type": "dropdown",
+          "values": [
+           {
+             "id": "up-press",
+             "label": {
+              "en": "Dim-up pressed"
+             }
+           },
+           {
+             "id": "up-hold",
+             "label": {
+               "en": "Dim-up hold"
+             }
+           },
+           {
+             "id": "down-press",
+             "label": {
+               "en": "Dim-down pressed"
+             }
+           },
+           {
+             "id": "down-hold",
+             "label": {
+               "en": "Dim-down hold"
+             }
+           },
+           {
+             "id": "release",
+             "label": {
+               "en": "Dim-button released"
+             }
+           }
+           ]
+           }
+          ],
+          "tokens": [
+            {
+              "name": "dimvalue",
+              "type": "number",
+              "title": {
+                "en": "DimValue"
+              },
+              "example": 1
+            }
+          ],
+       "conditions": [],
+       "actions": []
+       },
+         {
+          "id": "remote_control_arrow",
+          "title": {
+            "en": "Arrow buttons"
+          },
+          "args": [
+            {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=remote_control"
+            },
+          {
+            "name": "action",
+            "type": "dropdown",
+            "values": [
+             {
+               "id": "right-press",
+               "label": {
+                "en": "Arrow right pressed"
+               }
+             },
+             {
+               "id": "right-hold",
+               "label": {
+                 "en": "Arrow right hold"
+               }
+             },
+             {
+               "id": "left-press",
+               "label": {
+                 "en": "Arrow left pressed"
+               }
+             },
+             {
+               "id": "left-hold",
+               "label": {
+                 "en": "Arrow left hold"
+               }
+             },
+             {
+               "id": "release",
+               "label": {
+                 "en": "Arrow-button released"
+               }
+             }
+            ]
+            }
+           ],
         "tokens": [
           {
-            "name": "value",
+            "name": "arrowvalue",
             "type": "number",
             "title": {
-              "en": "Value",
-              "nl": "Waarde"
+              "en": "ArrowValue"
             },
             "example": 1
           }
-        ]
-      }
-    ]
-  }
+        ],
+     "conditions": [],
+     "actions": []
+     }
+     ]
+    }
 }

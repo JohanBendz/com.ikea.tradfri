@@ -252,6 +252,36 @@
       }
     },
     {
+      "id": "control_outlet",
+      "name": {
+        "en": "Control Outlet"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "TRADFRI control outlet"
+        ],
+        "deviceId": 266,
+        "profileId": [
+          260
+        ],
+        "learnmode": {
+          "image": "/drivers/control_outlet/assets/icon.svg",
+          "instruction": {
+            "en": "To start pairing, push a pin down into the hole on the bottom of the Control Outlet until the Control Outlet makes a click sound and start blinking."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/control_outlet/assets/images/large.jpg",
+        "small": "/drivers/control_outlet/assets/images/small.jpg"
+      }
+    },
+    {
       "id": "dimmable_transformer",
       "name": {
         "en": "Dimmable Transformer",

@@ -252,6 +252,12 @@
       }
     },
     {
+      "id": "OnOff_switch",
+      "name": {
+        "en": "On/Off Switch"
+      },
+    },
+    {
       "id": "control_outlet",
       "name": {
         "en": "Control Outlet"

@@ -256,6 +256,28 @@
       "name": {
         "en": "On/Off Switch"
       },
+      "class": "sensor",
+      "capabilities": [],
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "TRADFRI on/off switch"
+        ],
+        "deviceId": 2080,
+        "profileId": [
+          49246
+        ],
+        "learnmode": {
+          "image": "/drivers/onoff_switch/assets/icon.svg",
+          "instruction": {
+            "en": "XYZ"
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/onoff_switch/assets/images/large.png",
+        "small": "/drivers/onoff_switch/assets/images/small.png"
+      }
     },
     {
       "id": "control_outlet",

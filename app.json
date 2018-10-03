@@ -256,7 +256,7 @@
       "name": {
         "en": "Control Outlet"
       },
-      "class": "light",
+      "class": "socket",
       "capabilities": [
         "onoff"
       ],

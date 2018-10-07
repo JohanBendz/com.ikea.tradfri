@@ -1,6 +1,6 @@
 'use strict';
 
-const ZigBeeLightDevice = require('homey-meshdriver').ZigBeeLightDevice;
+const ZigBeeDevice = require('homey-meshdriver').ZigBeeDevice;
 
 class ControlOutlet extends ZigBeeDevice {
 	onMeshInit() {

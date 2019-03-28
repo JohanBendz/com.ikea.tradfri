@@ -3,6 +3,9 @@
 This app allows you to connect your IKEA Trådfri Devices to Homey
 
 ### Changelog
+Version 1.2.13
+* Added support for IKEA Signal Repeater
+
 Version 1.2.12
 * Add productId for IKEA Trådfri Transformer 10W
 

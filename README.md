@@ -3,6 +3,20 @@
 This app allows you to connect your IKEA Trådfri Devices to Homey
 
 ### Changelog
+Version 1.4.2
+* Adds support for Fyrtur roller blinds
+* Adds support for Kadrilj roller blinds
+* Adds support for 30W dimmable transformer
+* Adds support for 980lm tunable white E27 bulb
+* Adds support for 400lm dimmable warm white GU10 bulb
+* Adds support for 806lm dimmable warm white E27 bulb
+
+Version 1.2.14
+* Add productId for IKEA Trådfri Tunable White Bulb (E14)
+
+Version 1.2.13
+* Add support for IKEA Trådfri Signal Repeater
+
 Version 1.2.12
 * Add productId for IKEA Trådfri Transformer 10W
 

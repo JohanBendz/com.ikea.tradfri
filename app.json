@@ -1,21 +1,31 @@
 {
   "id": "com.ikea.tradfri",
   "name": {
-    "en": "IKEA Trådfri"
+    "en": "IKEA Trådfri",
+    "de": "IKEA Trådfri"
   },
   "description": {
     "en": "IKEA Trådfri",
-    "nl": "IKEA Trådfri"
+    "nl": "IKEA Trådfri",
+    "de": "IKEA Trådfri"
   },
   "category": [
     "lights"
   ],
-  "version": "1.2.12",
+  "version": "1.4.2",
   "compatibility": ">=1.5.0",
   "sdk": 2,
   "author": {
     "name": "Athom B.V.",
     "email": "info@athom.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Lucas van der Have",
+        "email": "lucasvdhave@gmail.com"
+      }
+    ]
   },
   "images": {
     "large": "/assets/images/large.png",
@@ -23,10 +33,41 @@
   },
   "drivers": [
     {
+      "id": "signal_repeater",
+      "name": {
+        "en": "Signal Repeater",
+        "nl": "Signaalversterker"
+      },
+      "class": "other",
+      "capabilities": [],
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "TRADFRI signal repeater"
+        ],
+        "deviceId": 8,
+        "profileId": [
+          260
+        ],
+        "learnmode": {
+          "image": "/drivers/signal_repeater/assets/icon_pair.svg",
+          "instruction": {
+            "en": "Press and hold the pair button near the USB port with a small pin until the LED starts blinking.\n\nNote: it can take 15-20 seconds before pairing starts after releasing the button, if the device does not pair within 15-20 seconds please try again.",
+            "nl": "Houd met een klein pinnetje de knop bij de USB poort van de Signaalversterker ingedrukt totdat de LED gaat knipperen.\n\nLet op: het kan 15-20 seconden duren na het loslaten van de knop voor het apparaat wordt gekoppeld, gebeurt dit niet binnen 15-20 seconden probeer het dan nog eens."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/signal_repeater/assets/images/large.png",
+        "small": "/drivers/signal_repeater/assets/images/small.png"
+      }
+    },
+    {
       "id": "control_outlet",
       "name": {
         "en": "Control Outlet",
-        "nl": "Draadloos Stopcontact"
+        "nl": "Draadloos Stopcontact",
+        "de": "Drahtlose Steckdose"
       },
       "class": "socket",
       "capabilities": [
@@ -45,7 +86,8 @@
           "image": "/drivers/control_outlet/assets/learnmode.svg",
           "instruction": {
             "en": "Press and hold the pair button on top of the Control Outlet with a small pin until the LED starts blinking.\n\nNote: it can take 15-20 seconds before pairing starts after releasing the button, if the device does not pair within 15-20 seconds please try again.",
-            "nl": "Houd met een klein pinnetje de knop boven op het Draadloos Stopcontact ingedrukt totdat de LED gaat knipperen.\n\nLet op: het kan 15-20 seconden duren na het loslaten van de knop voor het apparaat wordt gekoppeld, gebeurt dit niet binnen 15-20 seconden probeer het dan nog eens."
+            "nl": "Houd met een klein pinnetje de knop boven op het Draadloos Stopcontact ingedrukt totdat de LED gaat knipperen.\n\nLet op: het kan 15-20 seconden duren na het loslaten van de knop voor het apparaat wordt gekoppeld, gebeurt dit niet binnen 15-20 seconden probeer het dan nog eens.",
+            "de": "Drücke und halte die Koppeln-Taste oben auf der drahtlosen Steckdose mit einem kleinen Stift, bis die LED blinkt.\n\nHinweis: es kann 15-20 Sekunden dauern, bevor das Koppeln nach dem Loslassen der Taste beginne; wenn das Gerät innerhalb 15-20 Minuten nicht gekoppelt wird, bitte versuche es erneut."
           }
         }
       },
@@ -58,7 +100,8 @@
       "id": "tunable_white_bulb",
       "name": {
         "en": "Tunable White Bulb (E27)",
-        "nl": "Instelbare Witte Lamp (E27)"
+        "nl": "Instelbare Witte Lamp (E27)",
+        "de": "Einstellbare weisse Birne (E27)"
       },
       "class": "light",
       "capabilities": [
@@ -82,6 +125,7 @@
           "TRADFRI bulb E27 WS�opal 980lm",
           "TRADFRI bulb E27 WS�opal 980lm",
           "TRADFRI bulb E27 WS opal 980lm",
+          "TRADFRI bulb E27 WS opal 1000lm",
           "TRADFRI bulb E12 WS opal 400lm",
           "TRADFRI bulb E26 WS clear 950lm",
           "TRADFRI bulb E26 WS opal 980lm",
@@ -89,7 +133,11 @@
           "TRADFRI bulb E26 WS�opal 980lm",
           "TRADFRI bulb E27 WS clear 950lm"
         ],
-        "deviceId": 544,
+        "deviceId": [
+          544,
+          256,
+          268
+        ],
         "profileId": [
           260,
           49246
@@ -98,7 +146,8 @@
           "image": "/drivers/tunable_white_bulb/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the bulb once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the bulb by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on very quickly. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte die Birne einmal um, um sie zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, die Birne durch 6-maliges Umschalten zurückzusetzen; schalte sie anschließend schnell ein. Sie blinkt zweimal, wenn sie zurückgesetzt wurde."
           }
         }
       },
@@ -112,16 +161,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -134,7 +186,8 @@
       "id": "tunable_white_bulb_e14",
       "name": {
         "en": "Tunable White Bulb (E14)",
-        "nl": "Instelbare Witte Lamp (E14)"
+        "nl": "Instelbare Witte Lamp (E14)",
+        "de": "Einstellbare weisse Birne (E14)"
       },
       "class": "light",
       "capabilities": [
@@ -154,8 +207,15 @@
       },
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
-        "productId": "TRADFRI bulb E14 WS opal 400lm",
-        "deviceId": 544,
+        "productId": [
+          "TRADFRI bulb E14 WS opal 400lm",
+          "TRADFRI bulb E14 WS opal 600lm"
+        ],
+        "deviceId": [
+          256,
+          268,
+          544
+        ],
         "profileId": [
           260,
           49246
@@ -164,7 +224,8 @@
           "image": "/drivers/tunable_white_bulb_e14/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the bulb once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the bulb by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte die Birne einmal um, um sie zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, die Birne durch 6-maliges Umschalten zurückzusetzen; schalte sie anschließend schnell ein. Sie blinkt zweimal, wenn sie zurückgesetzt wurde."
           }
         }
       },
@@ -178,16 +239,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -200,7 +264,8 @@
       "id": "rgb_bulb",
       "name": {
         "en": "RGB Bulb (E27)",
-        "nl": "RGB Lamp (E27)"
+        "nl": "RGB Lamp (E27)",
+        "de": "RGB-Birne (E27)"
       },
       "class": "light",
       "capabilities": [
@@ -232,16 +297,17 @@
           49246
         ],
         "learnmode": {
-          "image": "/drivers/tunable_white_bulb/assets/learnmode.svg",
+          "image": "/drivers/rgb_bulb/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the bulb once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the bulb by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte die Birne einmal um, um sie zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, die Birne durch 6-maliges Umschalten zurückzusetzen; schalte sie anschließend schnell ein. Sie blinkt zweimal, wenn sie zurückgesetzt wurde."
           }
         }
       },
       "images": {
-        "large": "/drivers/tunable_white_bulb/assets/images/large.png",
-        "small": "/drivers/tunable_white_bulb/assets/images/small.png"
+        "large": "/drivers/rgb_bulb/assets/images/large.png",
+        "small": "/drivers/rgb_bulb/assets/images/small.png"
       },
       "settings": [
         {
@@ -249,16 +315,94 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 6553
+          }
+        }
+      ]
+    },
+    {
+      "id": "rgb_bulb_e14",
+      "name": {
+        "en": "RGB Bulb (E14)",
+        "nl": "RGB Lamp (E14)",
+        "de": "RGB-Birne (E14)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_hue",
+        "light_saturation",
+        "light_temperature",
+        "light_mode"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "TRADFRI bulb E14 CWS opal 600lm"
+        ],
+        "deviceId": 512,
+        "profileId": [
+          49246
+        ],
+        "learnmode": {
+          "image": "/drivers/rgb_bulb_e14/assets/learnmode.svg",
+          "instruction": {
+            "en": "Toggle the bulb once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the bulb by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
+            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte die Birne einmal um, um sie zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, die Birne durch 6-maliges Umschalten zurückzusetzen; schalte sie anschließend schnell ein. Sie blinkt zweimal, wenn sie zurückgesetzt wurde."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/rgb_bulb_e14/assets/images/large.jpg",
+        "small": "/drivers/rgb_bulb_e14/assets/images/small.jpg"
+      },
+      "settings": [
+        {
+          "id": "transition_time",
+          "type": "number",
+          "label": {
+            "en": "Dim duration",
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
+          },
+          "hint": {
+            "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -271,7 +415,8 @@
       "id": "remote_rotating_dimmer",
       "name": {
         "en": "Rotating Dimmer",
-        "nl": "Draai Dimmer"
+        "nl": "Draai Dimmer",
+        "de": "Drehdimmer"
       },
       "class": "sensor",
       "capabilities": [],
@@ -290,7 +435,8 @@
           "image": "/drivers/remote_rotating_dimmer/assets/icon_pair.svg",
           "instruction": {
             "en": "Open up the Rotating Dimmer to access the pair button. Press the pair button 4 times in 5 seconds",
-            "nl": "Maak de Draai Dimmer open om bij de pair knop te komen. Druk 4 keer op de pair knop binnen 5 seconden"
+            "nl": "Maak de Draai Dimmer open om bij de pair knop te komen. Druk 4 keer op de pair knop binnen 5 seconden",
+            "de": "Öffne den Drehdimmer, um auf die Koppeln-Taste zuzugreifen. Drücke die Taste 4 Mal in 5 Sekunden."
           }
         }
       },
@@ -304,7 +450,8 @@
           "type": "number",
           "label": {
             "nl": "Dimmer gevoeligheid",
-            "en": "Dimmer sensitivity"
+            "en": "Dimmer sensitivity",
+            "de": "Dimmerempfindlichkeit"
           },
           "value": 1,
           "attr": {
@@ -319,7 +466,8 @@
       "id": "dimmable_bulb",
       "name": {
         "en": "Dimmable Bulb (E27)",
-        "nl": "Dimbare Lamp (E27)"
+        "nl": "Dimbare Lamp (E27)",
+        "de": "Dimmbare Birne (E27)"
       },
       "class": "light",
       "capabilities": [
@@ -340,9 +488,14 @@
         "manufacturerName": "IKEA of Sweden",
         "productId": [
           "TRADFRI bulb E27 opal 1000lm",
-          "TRADFRI bulb E27 W opal 1000lm"
+          "TRADFRI bulb E27 W opal 1000lm",
+          "TRADFRI bulb E27 WW clear 250lm",
+          "TRADFRI bulb E27 WW 806lm"
         ],
-        "deviceId": 256,
+        "deviceId": [
+          256,
+          257
+        ],
         "profileId": [
           260,
           49246
@@ -351,7 +504,8 @@
           "image": "/drivers/dimmable_bulb/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the bulb once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the bulb by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte die Birne einmal um, um sie zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, die Birne durch 6-maliges Umschalten zurückzusetzen; schalte sie anschließend schnell ein. Sie blinkt zweimal, wenn sie zurückgesetzt wurde."
           }
         }
       },
@@ -365,16 +519,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -387,7 +544,8 @@
       "id": "dimmable_bulb_e14",
       "name": {
         "en": "Dimmable Bulb (E14)",
-        "nl": "Dimbare Lamp (E14)"
+        "nl": "Dimbare Lamp (E14)",
+        "de": "Dimmbare Birne (E14)"
       },
       "class": "light",
       "capabilities": [
@@ -416,7 +574,8 @@
           "image": "/drivers/dimmable_bulb_e14/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the bulb once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the bulb by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de lamp één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De lamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte die Birne einmal um, um sie zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, die Birne durch 6-maliges Umschalten zurückzusetzen; schalte sie anschließend schnell ein. Sie blinkt zweimal, wenn sie zurückgesetzt wurde."
           }
         }
       },
@@ -430,16 +589,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -452,7 +614,8 @@
       "id": "dimmable_transformer",
       "name": {
         "en": "Dimmable Transformer",
-        "nl": "Dimbare Transformator"
+        "nl": "Dimbare Transformator",
+        "de": "Dimmbarer Transformator"
       },
       "class": "light",
       "capabilities": [
@@ -474,7 +637,8 @@
         "productId": [
           "TRADFRI transformer 10W",
           "TRADFRI transformer 30W",
-          "TRADFRI Driver 10W"
+          "TRADFRI Driver 10W",
+          "TRADFRI Driver 30W"
         ],
         "deviceId": 256,
         "profileId": [
@@ -485,7 +649,8 @@
           "image": "/drivers/dimmable_transformer/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the transformer once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the transformer by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de transformator één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de transformator aan en uit te zetten. De transformator zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de transformator één keer uit en weer aan.\n\nWordt de lamp niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de transformator aan en uit te zetten. De transformator zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte den Transformator einmal um, um ihn zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, den Transformator durch 6-maliges Umschalten zurückzusetzen; schalte ihn anschließend schnell ein. Er blinkt zweimal, wenn er zurückgesetzt wurde."
           }
         }
       },
@@ -499,16 +664,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -521,7 +689,8 @@
       "id": "dimmable_spot",
       "name": {
         "en": "Dimmable Spot (GU10)",
-        "nl": "Dimbare Spot (GU10)"
+        "nl": "Dimbare Spot (GU10)",
+        "de": "Dimmbarer Spot (GU10)"
       },
       "class": "light",
       "capabilities": [
@@ -540,8 +709,14 @@
       },
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
-        "productId": "TRADFRI bulb GU10 W 400lm",
-        "deviceId": 256,
+        "productId": [
+          "TRADFRI bulb GU10 W 400lm",
+          "TRADFRI bulb GU10 WW 400lm"
+        ],
+        "deviceId": [
+          256,
+          257
+        ],
         "profileId": [
           260,
           49246
@@ -550,7 +725,8 @@
           "image": "/drivers/dimmable_spot/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the spot once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the spot by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de spot één keer uit en weer aan.\n\nWordt de spot niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de spot aan en uit te zetten. De spot zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de spot één keer uit en weer aan.\n\nWordt de spot niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de spot aan en uit te zetten. De spot zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte den Spot einmal um, um ihn zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, den Spot durch 6-maliges Umschalten zurückzusetzen; schalte ihn anschließend schnell ein. Er blinkt zweimal, wenn er zurückgesetzt wurde."
           }
         }
       },
@@ -564,16 +740,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -586,7 +765,8 @@
       "id": "tunable_spot",
       "name": {
         "en": "Tunable Spot (GU10)",
-        "nl": "Instelbare Witte Spot (GU10)"
+        "nl": "Instelbare Witte Spot (GU10)",
+        "de": "Einstellbarer Spot (GU10)"
       },
       "class": "light",
       "capabilities": [
@@ -619,7 +799,8 @@
           "image": "/drivers/tunable_spot/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the spot once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the spot by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet de spot één keer uit en weer aan.\n\nWordt de spot niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de spot aan en uit te zetten. De spot zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet de spot één keer uit en weer aan.\n\nWordt de spot niet automatisch toegevoegd binnen 20 seconden, probeer het dan te resetten door snel 6 keer de spot aan en uit te zetten. De spot zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte den Spot einmal um, um ihn zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, den Spot durch 6-maliges Umschalten zurückzusetzen; schalte ihn anschließend schnell ein. Er blinkt zweimal, wenn er zurückgesetzt wurde."
           }
         }
       },
@@ -633,16 +814,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -655,7 +839,8 @@
       "id": "floalt_panel",
       "name": {
         "en": "Floalt Panel",
-        "nl": "Floalt Paneel"
+        "nl": "Floalt Paneel",
+        "de": "FLOALT-Paneel"
       },
       "class": "light",
       "capabilities": [
@@ -690,7 +875,8 @@
           "image": "/drivers/floalt_panel/assets/learnmode.svg",
           "instruction": {
             "en": "Toggle the Floalt Panel once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the Floalt Panel by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
-            "nl": "Zet het Floalt Paneel één keer uit en weer aan.\n\nWordt het Floalt Paneel niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. Het Floalt Paneel zal twee keer knipperen om aan te geven dat hij is gereset."
+            "nl": "Zet het Floalt Paneel één keer uit en weer aan.\n\nWordt het Floalt Paneel niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. Het Floalt Paneel zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte das FLOALT-Paneel einmal um, um es zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, das FLOALT-Paneel durch 6-maliges Umschalten zurückzusetzen; schalte es anschließend schnell ein. Es blinkt zweimal, wenn es zurückgesetzt wurde."
           }
         }
       },
@@ -704,16 +890,19 @@
           "type": "number",
           "label": {
             "en": "Dim duration",
-            "nl": "Dim duur"
+            "nl": "Dim duur",
+            "de": "Dimmdauer"
           },
           "hint": {
             "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
-            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card."
+            "nl": "Deze instelling bepaalt de duur in seconden van het dimmen van een niveau naar een ander. Let op: deze instelling kan tijdelijk overschreven worden door de dim duur waarde in een Flow Card.",
+            "de": "Diese Einstellung bestimmt die Zeit in Sekunden, die für das Dimmen von einer auf die andere Stufe benötigt wird. Hinweis: diese Einstellung kann durch den Dauer-Wert in einer Flow-Karte überschrieben werden."
           },
           "value": 0,
           "units": {
             "en": "s",
-            "nl": "s"
+            "nl": "s",
+            "de": "s"
           },
           "attr": {
             "min": 0,
@@ -721,6 +910,72 @@
           }
         }
       ]
+    },
+    {
+      "id": "rollerblind_fyrtur",
+      "name": {
+        "en": "Fyrtur Roller Blind",
+        "nl": "Fyrtur Rolgordijn",
+        "de": "Fyrtur Rollo"
+      },
+      "class": "blinds",
+      "capabilities": [
+        "measure_battery",
+        "windowcoverings_set"
+      ],
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "FYRTUR block-out roller blind"
+        ],
+        "deviceId": 514,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/rollerblind_fyrtur/assets/learnmode.svg",
+          "instruction": {
+            "en": "Simultaneously press the up and down buttons on the rollerblind until the LED starts blinking.\n\nNote: it can take 15-20 seconds before pairing starts, if the device does not pair within 15-20 seconds please try again.",
+            "nl": "Druk tegelijk de twee omhoog en omlaag knoppen op het rolgordijn in totdat de LED begint te knipperen.\n\nLet op: het kan 15-20 seconden duren voor het apparaat wordt gekoppeld, gebeurt dit niet binnen 15-20 seconden probeer het dan nog eens.",
+            "de": "Drücke gleichzeitig die Auf- und Ab-Tasten am Rollo, bis die LED zu blinken beginnt.\n\nHinweis: Es kann 15-20 Sekunden dauern, bis die Kopplung beginnt. Wenn das Gerät nicht innerhalb von 15-20 Sekunden koppelt, versuche es bitte erneut."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/rollerblind_fyrtur/assets/images/large.jpg",
+        "small": "/drivers/rollerblind_fyrtur/assets/images/small.jpg"
+      }
+    },
+    {
+      "id": "rollerblind_kadrilj",
+      "name": {
+        "en": "Kadrilj Roller Blind",
+        "nl": "Kadrilj Rolgordijn",
+        "de": "Kadrilj Rollo"
+      },
+      "class": "blinds",
+      "capabilities": [
+        "measure_battery",
+        "windowcoverings_set"
+      ],
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "KADRILJ roller blind"
+        ],
+        "deviceId": 514,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/rollerblind_kadrilj/assets/learnmode.svg",
+          "instruction": {
+            "en": "Simultaneously press the up and down buttons on the roller blind until the LED starts blinking.\n\nNote: it can take 15-20 seconds before pairing starts, if the device does not pair within 15-20 seconds please try again.",
+            "nl": "Druk tegelijk de twee omhoog en omlaag knoppen op het rolgordijn in totdat de LED begint te knipperen.\n\nLet op: het kan 15-20 seconden duren voor het apparaat wordt gekoppeld, gebeurt dit niet binnen 15-20 seconden probeer het dan nog eens.",
+            "de": "Drücke gleichzeitig die Auf- und Ab-Tasten am Rollo, bis die LED zu blinken beginnt.\n\nHinweis: Es kann 15-20 Sekunden dauern, bis die Kopplung beginnt. Wenn das Gerät nicht innerhalb von 15-20 Sekunden koppelt, versuche es bitte erneut."
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/rollerblind_kadrilj/assets/images/large.jpg",
+        "small": "/drivers/rollerblind_kadrilj/assets/images/small.jpg"
+      }
     }
   ],
   "flow": {
@@ -729,7 +984,8 @@
         "id": "dimmer_rotated",
         "title": {
           "en": "Dimmer was rotated",
-          "nl": "Dimmer is gedraaid"
+          "nl": "Dimmer is gedraaid",
+          "de": "Dimmer wurde gedreht"
         },
         "args": [
           {
@@ -744,7 +1000,8 @@
             "type": "number",
             "title": {
               "en": "Value",
-              "nl": "Waarde"
+              "nl": "Waarde",
+              "de": "Wert"
             },
             "example": 1
           }
@@ -754,7 +1011,8 @@
         "id": "dimmer_rotate_stopped",
         "title": {
           "en": "Dimmer stopped rotating",
-          "nl": "Dimmer is gestopt met draaien"
+          "nl": "Dimmer is gestopt met draaien",
+          "de": "Dimmerdrehung angehalten"
         },
         "args": [
           {
@@ -769,7 +1027,8 @@
             "type": "number",
             "title": {
               "en": "Value",
-              "nl": "Waarde"
+              "nl": "Waarde",
+              "de": "Wert"
             },
             "example": 1
           }

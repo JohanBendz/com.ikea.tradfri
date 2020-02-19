@@ -3,6 +3,18 @@
 This app allows you to connect your IKEA Trådfri Devices to Homey
 
 ### Changelog
+Version 1.5.3
+* Fixed Energy related issue
+
+Version 1.5.2
+* Fixed issue where Kadrilj/Fyrtur would not roll up completely
+
+Version 1.5.1
+* Added productId for 806lm E27 WS clear
+
+Version 1.5.0
+* Adds support for Energy
+
 Version 1.4.2
 * Adds support for Fyrtur roller blinds
 * Adds support for Kadrilj roller blinds

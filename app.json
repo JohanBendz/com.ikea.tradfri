@@ -5,15 +5,15 @@
     "de": "IKEA Trådfri"
   },
   "description": {
-    "en": "IKEA Trådfri",
-    "nl": "IKEA Trådfri",
-    "de": "IKEA Trådfri"
+    "en": "Create the right atmosphere for every mood",
+    "nl": "Creëer de juiste sfeer voor elke stemming"
   },
   "category": [
     "lights"
   ],
-  "version": "1.4.2",
-  "compatibility": ">=1.5.0",
+  "version": "1.6.1",
+  "compatibility": ">=3.0.0",
+  "brandColor": "#0b579e",
   "sdk": 2,
   "author": {
     "name": "Athom B.V.",
@@ -43,7 +43,8 @@
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
         "productId": [
-          "TRADFRI signal repeater"
+          "TRADFRI signal repeater",
+          "TRADFRI Signal Repeater"
         ],
         "deviceId": 8,
         "profileId": [
@@ -131,7 +132,8 @@
           "TRADFRI bulb E26 WS opal 980lm",
           "TRADFRI bulb E26 WS�opal 980lm",
           "TRADFRI bulb E26 WS�opal 980lm",
-          "TRADFRI bulb E27 WS clear 950lm"
+          "TRADFRI bulb E27 WS clear 950lm",
+          "TRADFRI bulb E27 WS clear 806lm"
         ],
         "deviceId": [
           544,
@@ -420,6 +422,11 @@
       },
       "class": "sensor",
       "capabilities": [],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
         "productId": [
@@ -923,6 +930,11 @@
         "measure_battery",
         "windowcoverings_set"
       ],
+      "energy": {
+        "batteries": [
+          "OTHER"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
         "productId": [
@@ -956,6 +968,11 @@
         "measure_battery",
         "windowcoverings_set"
       ],
+      "energy": {
+        "batteries": [
+          "OTHER"
+        ]
+      },
       "zigbee": {
         "manufacturerName": "IKEA of Sweden",
         "productId": [
@@ -975,6 +992,138 @@
       "images": {
         "large": "/drivers/rollerblind_kadrilj/assets/images/large.jpg",
         "small": "/drivers/rollerblind_kadrilj/assets/images/small.jpg"
+      }
+    },
+    {
+      "id": "gunnarp_square",
+      "name": {
+        "en": "Gunnarp Ceiling/Wall Lamp",
+        "nl": "Gunnarp Plafond-/Wandlamp",
+        "de": "Gunnarp Decken-/Wandleuchte"
+      },
+      "class": "light",
+      "capabilities": [
+        "light_temperature",
+        "dim",
+        "onoff"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/gunnarp_square/assets/images/large.png",
+        "small": "/drivers/gunnarp_square/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "GUNNARP panel 40*40"
+        ],
+        "deviceId": 268,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/gunnarp_square/assets/learnmode.svg",
+          "instruction": {
+            "en": "Toggle the Gunnarp Ceiling/Wall lamp once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the Gunnarp Ceiling/Wall lamp by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
+            "nl": "Zet de Gunnarp Plafond-/Wandlamp één keer uit en weer aan.\n\nWordt de Gunnarp Plafond-/Wandlamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De Gunnarp Plafond-/Wandlamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte das Gunnarp Decken-/Wandleuchte einmal um, um es zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, das Gunnarp Decken-/Wandleuchte durch 6-maliges Umschalten zurückzusetzen; schalte es anschließend schnell ein. Es blinkt zweimal, wenn es zurückgesetzt wurde."
+          }
+        }
+      }
+    },
+    {
+      "id": "gunnarp_round",
+      "name": {
+        "en": "Gunnarp Ceiling/Wall Lamp",
+        "nl": "Gunnarp Plafond-/Wandlamp",
+        "de": "Gunnarp Decken-/Wandleuchte"
+      },
+      "class": "light",
+      "capabilities": [
+        "light_temperature",
+        "dim",
+        "onoff"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/gunnarp_round/assets/images/large.png",
+        "small": "/drivers/gunnarp_round/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "GUNNARP panel round"
+        ],
+        "deviceId": 268,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/gunnarp_round/assets/learnmode.svg",
+          "instruction": {
+            "en": "Toggle the Gunnarp Ceiling/Wall lamp once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the Gunnarp Ceiling/Wall lamp by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
+            "nl": "Zet de Gunnarp Plafond-/Wandlamp één keer uit en weer aan.\n\nWordt de Gunnarp Plafond-/Wandlamp niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De Gunnarp Plafond-/Wandlamp zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte das Gunnarp Decken-/Wandleuchte einmal um, um es zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, das Gunnarp Decken-/Wandleuchte durch 6-maliges Umschalten zurückzusetzen; schalte es anschließend schnell ein. Es blinkt zweimal, wenn es zurückgesetzt wurde."
+          }
+        }
+      }
+    },
+    {
+      "id": "dimmable_spot_leptiter",
+      "name": {
+        "en": "Leptiter Recessed Spotlight",
+        "nl": "Leptiter Inbouwspot",
+        "de": "Leptiter Einbauspot"
+      },
+      "class": "light",
+      "capabilities": [
+        "dim",
+        "onoff",
+        "light_temperature"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          }
+        },
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/dimmable_spot_leptiter/assets/images/large.png",
+        "small": "/drivers/dimmable_spot_leptiter/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": "IKEA of Sweden",
+        "productId": [
+          "LEPTITER Recessed spot light"
+        ],
+        "deviceId": 268,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/dimmable_spot_leptiter/assets/learnmode.svg",
+          "instruction": {
+            "en": "Toggle the Leptiter Recessed Spotlight once to start pairing.\n\nIf pairing does not automatically start within 20 seconds, try resetting the Leptiter Recessed Spotlight by toggling it 6 times as demonstrated by the animation, afterwards leave it turned on. It will flash twice to indicate it has been reset.",
+            "nl": "Zet de Leptiter Inbouwspot één keer uit en weer aan.\n\nWordt de Leptiter Inbouwspot niet automatisch toegevoegd binnen 20 seconden, probeer dan een reset uit te voeren door de lamp 6 keer uit en aan te zetten zoals de animatie laat zien, laat de lamp vervolgens aan staan. De Leptiter Inbouwspot zal twee keer knipperen om aan te geven dat hij is gereset.",
+            "de": "Schalte das Leptiter Einbauspot einmal um, um es zu koppeln.\n\nWenn das Koppeln innerhalb 20 Sekunden nicht automatisch startet, versuche, wie in der Animation demonstriert, das Leptiter Einbauspot durch 6-maliges Umschalten zurückzusetzen; schalte es anschließend schnell ein. Es blinkt zweimal, wenn es zurückgesetzt wurde."
+          }
+        }
       }
     }
   ],

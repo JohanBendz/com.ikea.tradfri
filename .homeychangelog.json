@@ -1,0 +1,5 @@
+{
+  "1.6.1": {
+    "en": "Added support for Gunnarp and Leptiter, fixed an issue with Signal Repeater, improved light behaviour related to onoff/dim actions in Flows and updated app descriptions."
+  }
+}

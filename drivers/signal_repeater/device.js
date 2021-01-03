@@ -1,6 +1,6 @@
 'use strict';
 
-const ZigBeeDevice = require('homey-meshdriver').ZigBeeDevice;
+const { ZigBeeDevice } = require('homey-zigbeedriver');
 
 class SignalRepeater extends ZigBeeDevice {
 

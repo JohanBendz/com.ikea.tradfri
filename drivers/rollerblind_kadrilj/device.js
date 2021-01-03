@@ -1,6 +1,6 @@
 'use strict';
 
-const GenericRollerBlindDevice = require('../GenericRollerBlindDevice');
+const GenericRollerBlindDevice = require('../../lib/GenericRollerBlindDevice');
 
 class RollerBlindKadrilj extends GenericRollerBlindDevice {
 

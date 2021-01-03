@@ -1,5 +1,20 @@
 {
   "1.6.1": {
     "en": "Added support for Gunnarp and Leptiter, fixed an issue with Signal Repeater, improved light behaviour related to onoff/dim actions in Flows and updated app descriptions."
+  },
+  "1.7.0": {
+    "en": "Update to latest version of Homey Apps SDK."
+  },
+  "1.7.1": {
+    "en": "Updated to the latest version of the Homey Apps SDK, added support for Wireless Dimmer, Motion Sensor, Remote Control (5-button), Up/Down Remote Control, and implemented various bug fixes and improvements."
+  },
+  "1.7.2": {
+    "en": "Updated to the latest version of the Homey Apps SDK, added support for Wireless Dimmer, Motion Sensor, Remote Control (5-button), Up/Down Remote Control, and implemented various bug fixes and improvements."
+  },
+  "1.7.3": {
+    "en": "Updated to the latest version of the Homey Apps SDK, added support for Wireless Dimmer, Motion Sensor, Remote Control (5-button), Up/Down Remote Control, changed the way color temperature is calculated, and implemented various bug fixes and improvements."
+  },
+  "1.7.5": {
+    "en": "Updated to the latest version of the Homey Apps SDK, added support for Wireless Dimmer, Motion Sensor, Remote Control (5-button), Up/Down Remote Control, Tunable White Bulb E14 470lm, changed the way color temperature is calculated, and implemented various bug fixes and improvements."
   }
 }

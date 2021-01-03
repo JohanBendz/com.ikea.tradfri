@@ -1,136 +1,135 @@
 'use strict';
 
+// eslint-disable-next-line no-unused-vars,node/no-unpublished-require
 const Homey = require('homey');
-const ZigBeeDevice = require('homey-meshdriver').ZigBeeDevice;
+const { Util, ZigBeeDevice } = require('homey-zigbeedriver');
+const { CLUSTER } = require('zigbee-clusters');
+
+const LevelControlBoundCluster = require('../../lib/LevelControlBoundCluster');
+
+const { throttle, debounce } = Util;
 
 const maxValue = 255;
 
+const FLOW_TRIGGER = {
+  DIMMER_ROTATED: 'dimmer_rotated',
+  DIMMER_ROTATE_STOPPED: 'dimmer_rotate_stopped',
+};
+
 class RemoteRotatingDimmer extends ZigBeeDevice {
 
-	onMeshInit() {
-		this.moving = false;
-		this.movingSince = null;
-		this.moveDirection = null;
-		this.rate = null;
-		this.value = 255;
+  async onNodeInit({ zclNode }) {
+    this.moving = false;
+    this.movingSince = null;
+    this.moveDirection = null;
+    this.rate = null;
+    this.value = 255;
 
-		// Register report listeners
-		this.registerReportListener('genLevelCtrl', 'move', this.moveCommandParser.bind(this));
-		this.registerReportListener('genLevelCtrl', 'moveWithOnOff', this.moveCommandParser.bind(this));
-		this.registerReportListener('genLevelCtrl', 'stop', this.stopCommandParser.bind(this));
-		this.registerReportListener('genLevelCtrl', 'stopWithOnOff', this.stopCommandParser.bind(this));
-		this.registerReportListener('genLevelCtrl', 'moveToLevelWithOnOff', payload => {
-			this.value = payload.level;
-		});
+    // Migration step, adds measure_battery capability if not already available
+    if (!this.hasCapability('alarm_battery')) {
+      await this.addCapability('alarm_battery');
+    }
 
-		// Register dimmer_rotated Flow Card Device Trigger
-		this.dimmerRotatedTriggerDevice = new Homey.FlowCardTriggerDevice('dimmer_rotated');
-		this.dimmerRotatedTriggerDevice.register();
+    // Register measure_battery capability and configure attribute reporting
+    this.batteryThreshold = 20;
+    this.registerCapability('alarm_battery', CLUSTER.POWER_CONFIGURATION, {
+      getOpts: {
+        getOnStart: true,
+      },
+      reportOpts: {
+        configureAttributeReporting: {
+          minInterval: 0, // No minimum reporting interval
+          maxInterval: 60000, // Maximally every ~16 hours
+          minChange: 5, // Report when value changed by 5
+        },
+      },
+    });
 
-		// Create throttled function for trigger Flow
-		this.triggerDimmerRotatedFlow = this.throttle(() => {
-			const parsedValue = Math.round(this.value / maxValue * 100) / 100;
-			return this.dimmerRotatedTriggerDevice.trigger(this, { value: parsedValue }, null)
-				.then(() => {
-					this.log(`trigger value ${parsedValue}`);
-				})
-				.catch(err => this.error('Error triggering dimmer_rotated', err));
-		}, 100);
+    // Bind bound cluster which handles incoming commands from the node, must be hardcoded on
+    // endpoint 1 for this device
+    const moveCommandParser = this.moveCommandParser.bind(this);
+    const stopCommandParser = this.stopCommandParser.bind(this);
+    this.zclNode.endpoints[1].bind(CLUSTER.LEVEL_CONTROL.NAME, new LevelControlBoundCluster({
+      onMove: moveCommandParser,
+      onMoveWithOnOff: moveCommandParser,
+      onStop: stopCommandParser,
+      onStopWithOnOff: stopCommandParser,
+    }));
 
-		// Register dimmer_rotate_stopped Flow Card Device Trigger
-		this.dimmerRotateStoppedTriggerDevice = new Homey.FlowCardTriggerDevice('dimmer_rotate_stopped');
-		this.dimmerRotateStoppedTriggerDevice.register();
+    // Create throttled function for trigger Flow
+    this.triggerDimmerRotatedFlow = throttle(() => this.triggerFlow({
+      id: FLOW_TRIGGER.DIMMER_ROTATED,
+      tokens: { value: this.currentRotateValue },
+      state: null,
+    }).then(() => this.log(`trigger value ${this.currentRotateValue}`)),
+    100);
 
-		// Create debounced function for trigger Flow
-		this.triggerDimmerRotateStoppedFlow = this.debounce(() => {
-			const parsedValue = Math.round(this.value / maxValue * 100) / 100;
-			return this.dimmerRotateStoppedTriggerDevice.trigger(this, { value: parsedValue }, null)
-				.then(() => {
-					this.log(`stopped trigger value ${parsedValue}`);
-				})
-				.catch(err => this.error('Error triggering dimmer_rotate_stopped', err));
-		}, 1000);
-	}
+    // Create debounced function for trigger Flow
+    this.triggerDimmerRotateStoppedFlow = debounce(() => this.triggerFlow({
+      id: FLOW_TRIGGER.DIMMER_ROTATE_STOPPED,
+      tokens: { value: this.currentRotateValue },
+      state: null,
+    }).then(() => this.log(`stopped trigger value ${this.currentRotateValue}`)),
+    500);
+  }
 
-	/**
-	 * Method that parsed an incoming move report
-	 * @param payload
-	 * @returns {*}
-	 */
-	moveCommandParser(payload) {
-		this.moving = true;
-		this.movingSince = Date.now();
-		this.moveDirection = payload.movemode === 0 ? 1 : -1;
-		this.rate = payload.rate;
-		this.triggerDimmerRotatedFlow();
-		this.triggerDimmerRotateStoppedFlow();
-	}
+  /**
+   * Returns currently calculated rotate value.
+   * @returns {number}
+   */
+  get currentRotateValue() {
+    return Math.round((this.value / maxValue) * 100) / 100;
+  }
 
-	/**
-	 * Method that parsed an incoming stop report
-	 * @returns {*}
-	 */
-	stopCommandParser() {
-		if (this.moving === true || Date.now() - this.movingSince < 3000) {
-			const sensitivity = this.getSetting('sensitivity');
+  /**
+   * Method that parsed an incoming `move` or `moveWithOnOff` command.
+   * @param {object} payload
+   * @property {string} payload.moveMode - 'up' or 'down'
+   * @property {number} payload.rate
+   */
+  moveCommandParser(payload) {
+    this.debug('moveCommandParser', payload);
+    this.moving = true;
+    this.movingSince = Date.now();
+    this.moveDirection = payload.moveMode === 'up' ? 1 : -1;
+    this.rate = payload.rate;
+    this.triggerDimmerRotatedFlow();
+    this.triggerDimmerRotateStoppedFlow();
+  }
 
-			let delta = 0;
-			if (typeof sensitivity === 'number' && !isNaN(sensitivity) && sensitivity > 0.1) {
-				delta = (Date.now() - this.movingSince) / 1000 * this.rate * sensitivity;
-			} else {
-				delta = (Date.now() - this.movingSince) / 1000 * this.rate;
-			}
+  /**
+   * Method that handles an incoming `stop` or `stopWithOnOff` command.
+   */
+  stopCommandParser() {
+    this.debug('stopCommandParser', {
+      moving: this.moving,
+      movingSince: this.movingSince,
+      value: this.value,
+      rate: this.rate,
+      direction: this.moveDirection,
+    });
 
-			this.value = this.value + delta * this.moveDirection;
+    if (this.moving === true || Date.now() - this.movingSince < 3000) {
+      const sensitivity = this.getSetting('sensitivity');
 
-			if (this.value > maxValue) this.value = maxValue;
-			if (this.value < 0) this.value = 0;
+      let delta = 0;
+      if (typeof sensitivity === 'number' && !Number.isNaN(sensitivity) && sensitivity > 0.1) {
+        delta = ((Date.now() - this.movingSince) / 1000) * this.rate * sensitivity;
+      } else {
+        delta = ((Date.now() - this.movingSince) / 1000) * this.rate;
+      }
 
-			this.moving = false;
-			this.movingSince = null;
-		}
-		this.triggerDimmerRotatedFlow();
-		this.triggerDimmerRotateStoppedFlow();
-	}
+      this.value += delta * this.moveDirection;
 
-	/**
-	 * Plain JS implementation of Underscore's _.debounce.
-	 * @param func
-	 * @param wait
-	 * @param immediate
-	 * @returns {Function}
-	 */
-	debounce(func, wait, immediate) {
-		let timeout;
-		return function () {
-			const context = this;
-			const args = arguments;
-			const later = function () {
-				timeout = null;
-				if (!immediate) func.apply(context, args);
-			};
-			const callNow = immediate && !timeout;
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-			if (callNow) func.apply(context, args);
-		};
-	}
+      if (this.value > maxValue) this.value = maxValue;
+      if (this.value < 0) this.value = 0;
 
-	/**
-	 * Plain JS implementation of Underscore's _.throttle.
-	 * @param func
-	 * @param wait
-	 * @returns {Function}
-	 */
-	throttle(fn, wait) {
-		let time = Date.now();
-		return function () {
-			if ((time + wait - Date.now()) < 0) {
-				fn();
-				time = Date.now();
-			}
-		};
-	}
+      this.moving = false;
+      this.movingSince = null;
+    }
+    this.triggerDimmerRotatedFlow();
+    this.triggerDimmerRotateStoppedFlow();
+  }
 
 }
 

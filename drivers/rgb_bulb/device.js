@@ -1,18 +1,20 @@
 'use strict';
 
-const ZigBeeXYLightDevice = require('homey-meshdriver').ZigBeeXYLightDevice;
+const { ZigBeeLightDevice } = require('homey-zigbeedriver');
 
-class RgbBulb extends ZigBeeXYLightDevice {
-	get energyMap() {
-		return {
-			'TRADFRI bulb E27 CWS opal 600lm': {
-				approximation: {
-					usageOff: 0.5,
-					usageOn: 8.6
-				}
-			}
-		}
-	}
+class RgbBulb extends ZigBeeLightDevice {
+
+  get energyMap() {
+    return {
+      'TRADFRI bulb E27 CWS opal 600lm': {
+        approximation: {
+          usageOff: 0.5,
+          usageOn: 8.6,
+        },
+      },
+    };
+  }
+
 }
 
 module.exports = RgbBulb;

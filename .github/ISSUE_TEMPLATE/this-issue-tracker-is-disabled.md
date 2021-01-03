@@ -1,11 +1,14 @@
 ---
 name: This issue tracker is disabled
-about: Please report issues at https://github.com/athombv/homey/issues
+about: This issue tracker is disabled
 
 ---
 
 # This issue tracker is disabled
 
-Please report issues [here](https://github.com/athombv/homey/issues). This issue tracker will not be monitored.
+Customers should find help at https://support.athom.com.
 
-Thank you for your cooperation!
+Developers should report their issues at:
+
+- Apps SDK: https://github.com/athombv/homey-apps-sdk-issues
+- Web API: https://github.com/athombv/homey-web-api-issues
